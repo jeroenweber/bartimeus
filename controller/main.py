@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/people', methods=["GET"])
 def get_people():
-    people = db_controller.getpeople()
+    people = db_controller.executequery('people')
     return jsonify(people)
 
 """
