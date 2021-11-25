@@ -13,20 +13,16 @@ def dbclose():
   mycursor.close()
   mydb.close()
 
-def getpeople():
+def executequery(query):
   global mycursor
-  people = []
-  sql = 'SELECT * FROM people;'
+  dbconnect()
+  resultset = []
+  if (query == 'people'):
+    sql = 'SELECT * FROM people;'
+  else:
+    query = 'can be extended but never reached, use elif'
   mycursor.execute(sql)
   for (record) in mycursor:
-    people.append(record)
-  return people
-
-def executequery(query):
-  dbconnect()
-  if (query == 'people'):
-    resultset = getpeople()
-  else:
-    resultset = ''
+    resultset.append(record)
   dbclose()
   return resultset
