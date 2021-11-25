@@ -1,11 +1,12 @@
 from flask import Flask, jsonify, request
-from repository import db_controller
+from services import dbservices
 
 app = Flask(__name__)
 
 @app.route('/people', methods=["GET"])
 def get_people():
-    people = db_controller.executequery('people')
+    #add servicelayer function (business logic) that executes db_controller
+    people = dbservices.getdata('people')
     return jsonify(people)
 
 """
