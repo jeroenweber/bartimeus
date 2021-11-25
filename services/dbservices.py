@@ -4,4 +4,8 @@ def getdata(query):
     return db_controller.executequery(query)
 
 def insertdata(data):
-    pass
+    resultset = []
+    for record in data:
+        result = db_controller.insert(record)
+        resultset.append(result)
+    return(resultset)
