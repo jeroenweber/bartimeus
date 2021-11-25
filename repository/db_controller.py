@@ -50,3 +50,12 @@ def insert(record):
   dbcommit()
   dbclose()
   return("Data inserted successfully into employee table using the prepared statement")
+
+def delete(id):
+  global mycursor
+  dbconnect()
+  sql_Delete_query = """Delete from people where id = %s"""
+  mycursor.execute(sql_Delete_query, (id,))
+  dbcommit()
+  dbclose()
+  print("Record Deleted successfully using Parameterized query")
