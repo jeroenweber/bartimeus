@@ -9,6 +9,11 @@ def get_people():
     people = dbservices.getdata('people')
     return jsonify(people)
 
+@app.route('/people', methods=["POST"])
+def add_people():
+    update = dbservices.insertdata(request.get_json())
+    return jsonify(update)
+
 """
 Enable CORS. Disable it if you don't need CORS
 """
