@@ -8,4 +8,10 @@ def insertdata(data):
     for record in data:
         result = db_controller.insert(record)
         resultset.append(result)
-    return(resultset)
+    return resultset
+
+def deleterecord(id):
+    print(id)
+    result = ''
+    #result = db_controller.delete(id)
+    return result
