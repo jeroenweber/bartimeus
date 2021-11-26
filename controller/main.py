@@ -14,6 +14,11 @@ def add_people():
     update = dbservices.insertdata(request.get_json())
     return jsonify(update)
 
+@app.route('/people/<id>', methods=["DELETE"])
+def delete_people(id):
+    update = dbservices.deleterecord(id)
+    return jsonify(update)
+
 """
 Enable CORS. Disable it if you don't need CORS
 """
