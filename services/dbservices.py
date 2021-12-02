@@ -11,7 +11,5 @@ def insertdata(data):
     return resultset
 
 def deleterecord(id):
-    print('id =' + id)
-    result = ''
-    #result = db_controller.delete(id)
+    result = db_controller.delete(id)
     return result
