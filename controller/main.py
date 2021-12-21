@@ -3,10 +3,16 @@ from services import dbservices
 
 app = Flask(__name__)
 
-@app.route('/people', methods=["GET"])
+@app.route('/client', methods=["GET"])
 def get_people():
     #add servicelayer function (business logic) that executes db_controller
-    people = dbservices.getdata('people')
+    people = dbservices.getdata('client')
+    return jsonify(people)
+
+@app.route('/meta', methods=["GET"])
+def get_meta():
+    #add servicelayer function (business logic) that executes db_controller
+    people = dbservices.getdata('meta')
     return jsonify(people)
 
 @app.route('/people', methods=["POST"])
