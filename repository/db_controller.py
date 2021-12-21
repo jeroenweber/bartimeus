@@ -33,6 +33,7 @@ def executequery(query):
   if (query == 'client'):
     sql = 'SELECT * FROM client;'
   elif (query == 'meta'):
+    #metadata 'show fields from <tablename>'
     sql = 'show fields from client;'
   else:
     query = 'can be extended but never reached, use elif'
