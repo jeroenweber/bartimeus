@@ -3,6 +3,14 @@ import mysql.connector
 global mydb
 global mycursor
 
+def formatrecord(columns,record):
+  number = len(columns)
+  res = []
+  for i in range(number):
+    res.append((columns[i],record[i]))
+  return res
+
+
 def dbconnect():
   global mydb, mycursor
   mydb = mysql.connector.connect(host='145.89.192.95', user='dbuser', passwd='Dbuser123!', database='ontime')
@@ -30,6 +38,7 @@ def executequery(query):
   global mycursor
   dbconnect()
   resultset = []
+  columns = []
   if (query == 'client'):
     sql = 'SELECT * FROM client;'
   elif (query == 'meta'):
@@ -40,7 +49,10 @@ def executequery(query):
     query = 'can be extended but never reached, use elif'
   mycursor.execute(sql)
   for (record) in mycursor:
-    resultset.append(record[0])
+    columns.append(record[0])
+  mycursor.execute('select * from client')
+  for record in mycursor:
+    resultset.append(formatrecord(columns,record))
   return resultset
 
 def insert(record):
