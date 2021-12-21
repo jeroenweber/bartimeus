@@ -30,8 +30,10 @@ def executequery(query):
   global mycursor
   dbconnect()
   resultset = []
-  if (query == 'people'):
-    sql = 'SELECT * FROM people;'
+  if (query == 'client'):
+    sql = 'SELECT * FROM client;'
+  elif (query == 'meta'):
+    sql = 'show fields from client;'
   else:
     query = 'can be extended but never reached, use elif'
   mycursor.execute(sql)
