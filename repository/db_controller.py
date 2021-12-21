@@ -33,13 +33,14 @@ def executequery(query):
   if (query == 'client'):
     sql = 'SELECT * FROM client;'
   elif (query == 'meta'):
-    #metadata 'show fields from <tablename>'
-    sql = 'show fields from client;'
+    #metadata 'show fields from <tablename>;'
+    #sql = 'show columns from tablename;'
+    sql = 'describe client;'
   else:
     query = 'can be extended but never reached, use elif'
   mycursor.execute(sql)
   for (record) in mycursor:
-    resultset.append(record)
+    resultset.append(record[0])
   return resultset
 
 def insert(record):
